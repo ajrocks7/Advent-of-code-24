@@ -1,0 +1,7 @@
+{
+    "require-dev": {
+        "garethellis/hamcrest-matchers": "^4.0",
+        "phpunit/phpunit": "^9.6",
+        "hamcrest/hamcrest-php": "^2.0"
+    }
+}
