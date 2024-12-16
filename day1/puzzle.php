@@ -4,7 +4,7 @@ require 'file.php';
 
 class Puzzle
 {
-    public function executePuzzle(): int
+    public function executePuzzle(): void
     {
         try {
             // Specify the file path
@@ -14,24 +14,24 @@ class Puzzle
             $data = readFileData($filePath);
 
             // Use the data
-            $leftSide = $data['left'];
-            $rightSide = $data['right'];
+            $leftSideInput = $data['left'];
+            $rightSideInput = $data['right'];
 
-            return $this->locationId($leftSide, $rightSide);
+            echo $this->locationId($leftSideInput, $rightSideInput);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
 
-    public function locationId(array $leftSide, array $rightSide):int
+    public function locationId(array $leftSideInput, array $rightSideInput):int
     {
-        sort($leftSide);
-        sort($rightSide);
+        sort($leftSideInput);
+        sort($rightSideInput);
 
         $sub = [];
         $sub = array_map(function ($x, $y) {
             return abs($x - $y);
-        }, $leftSide, $rightSide);
+        }, $leftSideInput, $rightSideInput);
 
         $add = array_sum($sub);
         return $add;

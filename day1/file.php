@@ -3,8 +3,8 @@
 function readFileData($filePath): array
 {
     // Initialize arrays for left and right sides
-    $leftSide = [];
-    $rightSide = [];
+    $leftSideInput = [];
+    $rightSideInput = [];
 
     // Open the file for reading
     if ($handle = fopen($filePath, 'r')) {
@@ -13,8 +13,8 @@ function readFileData($filePath): array
             // Split the line into two numbers
             $numbers = preg_split('/\s+/', trim($line));  // Split by whitespace
             if (count($numbers) === 2) {  // Ensure there are exactly two values
-                $leftSide[] = (int) $numbers[0];
-                $rightSide[] = (int) $numbers[1];
+                $leftSideInput[] = (int) $numbers[0];
+                $rightSideInput[] = (int) $numbers[1];
             }
         }
         fclose($handle);  // Close the file
@@ -23,6 +23,6 @@ function readFileData($filePath): array
     }
 
     // Return the data as an associative array
-    return ['left' => $leftSide, 'right' => $rightSide];
+    return ['left' => $leftSideInput, 'right' => $rightSideInput];
 }
 ?>
